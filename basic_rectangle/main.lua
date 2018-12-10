@@ -24,10 +24,13 @@ function createRect()
 	table.insert(listOfRectangles, rect)
 end
 
-function love.draw(dt)
-	for i,v in ipairs(listOfRectangles) do
-		love.graphics.rectangle("line", v.x, v.y, v.width, v.height)
-	end
-end
+function love.draw()
+    love.graphics.circle("line", circle.x, circle.y, circle.radius)
+    love.graphics.line(circle.x, circle.y, mouse_x, mouse_y)
+    love.graphics.line(circle.x, circle.y, mouse_x, circle.y)
+    love.graphics.line(mouse_x, mouse_y, mouse_x, circle.y)
 
+    local distance = getDistance(circle.x, circle.y, mouse_x, mouse_y)
+    love.graphics.circle("line", circle.x, circle.y, distance)
+end
 
